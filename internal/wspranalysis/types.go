@@ -3,6 +3,7 @@ package wspranalysis
 
 import (
 	"fmt"
+	"strings"
 	"time"
 )
 
@@ -79,7 +80,7 @@ func BandNames() []string {
 // Convert a band name to its corresponding integer code. Returns an error
 // if the band name is not recognised.
 func BandNameToCode(bandName string) (int, error) {
-	if code, ok := bandNameToCode[bandName]; ok {
+	if code, ok := bandNameToCode[strings.ToLower(bandName)]; ok {
 		return code, nil
 	}
 	return 0, fmt.Errorf("unrecognised band name: %s", bandName)
