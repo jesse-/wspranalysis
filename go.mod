@@ -1,4 +1,4 @@
-module example.com/wspranalysis
+module github.com/jesse-/wspranalysis
 
 go 1.24.5
 

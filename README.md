@@ -3,13 +3,46 @@ Utility for analysing WSPR data from wspr.live to assess transmitter &amp; anten
 
 This is my first Go program :)
 
-## Build ##
+## Build & Install ##
 
-To build the wspranalysis executable, just run `go build .` in the repo.
+Build the CLI binary from the `cmd` directory:
+
+```bash
+go build ./cmd/wspranalysis
+```
+
+Or install it into your Go `bin` directory:
+
+```bash
+go install github.com/jesse-/wspranalysis/cmd/wspranalysis@latest
+```
+
+Run tests:
+
+```bash
+go test ./...
+```
+
+You can also run the tool directly with `go run` while developing, eg:
+
+```bash
+go run ./cmd/wspranalysis -h
+```
 
 ## Usage ##
 
-To see usage information, run `./wspranalysis -h`. Required arguments are the target callsign (of the station whose effectiveness is to be assessed) and the band (e.g. 20m, 15m etc.).
+After building, run the CLI binary. The required arguments are the target callsign (the station to assess) and the band (for example `20m`, `15m`, etc.). Example:
+
+```bash
+./wspranalysis K1ABC 20m
+```
+
+Common flags:
+
+- `-start` : RFC3339 start time for the query (default: 24h ago)
+- `-duration` : duration to analyse (e.g. `24h`, `30m`)
+- `-norm` : transmit power in dBm to normalise SNRs (default: 43)
+- `-v` : verbose output (lists all transmitters heard by each receiver)
 
 ## What the Tool Does ##
 
